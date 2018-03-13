@@ -45,7 +45,7 @@ export class ClienteComponent implements OnInit {
     this.cargarEstadoCliente();
   }
 
-  cargarServicioCliente(){
+  cargarServicioCliente() {
     this._servicioService.cargarServicios()
     .subscribe( servicios => this.servicios = servicios );
 

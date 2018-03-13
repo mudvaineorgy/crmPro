@@ -6,11 +6,11 @@ import { Cliente } from '../../models/cliente.model';
 
 import swal from 'sweetalert2';
 import { ClientesComponent } from '../../pages/clientes/clientes.component';
+import { Title } from '@angular/platform-browser';
 
 
 @Injectable()
 export class ClienteService {
-  
   totalClientes: number = 0;
   termino: string;
 
@@ -68,9 +68,8 @@ export class ClienteService {
       });
     } else {
       // CREANDO
-
+  
       url += '?token=' + this._usuarioService.token;
-
       return this.http.post(url, cliente)
           .map((resp: any) => {
             swal('Cliente Creado', cliente.nombre, 'success');
