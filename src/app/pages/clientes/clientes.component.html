@@ -1,0 +1,155 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarCliente( input.value )" type="text" class="form-control" placeholder="Buscando cliente...">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<td class="footable-visible footable-first-column"><span class="footable-toggle"></span>Isidra</td>
+
+<div class="table-responsive">
+
+    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list footable-loaded footable" data-page-size="10">
+        <thead>
+            <tr>
+                <th class="footable-sortable">Nombre<span class="footable-sort-indicator"></span></th>
+                <th class="footable-sortable footable-sorted-desc">Empresa<span class="footable-sort-indicator"></span></th>
+                <th class="footable-sortable">Puesto<span class="footable-sort-indicator"></span></th>
+                <th class="footable-sortable">Giro<span class="footable-sort-indicator"></span></th>
+                <th class="footable-sortable">Age<span class="footable-sort-indicator"></span></th>
+                <th class="footable-sortable">Joining date<span class="footable-sort-indicator"></span></th>
+                <th class="footable-sortable">Action<span class="footable-sort-indicator"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="footable-even" *ngFor=" let cliente of clientes">
+                <td>
+                    <img [src]="cliente.img | imagen:'cliente'" class="img-50 img-circle"> {{cliente.nombre}}
+                </td>
+                <td>{{cliente.servicio.nombre}}</td>
+                <td>{{cliente.usuario.email}}</td>
+                <td>
+                    <label *ngIf="cliente.usuario.google" class="label label-danger">Google</label>
+                    <label *ngIf="!cliente.usuario.google" class="label label-info">Normal</label>
+
+                </td>
+                <td>{{cliente.usuario.google}}</td>
+                <td>{{cliente.estado.nombre}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/cliente', cliente._id ]" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Editar"><i class="ti-pencil" aria-hidden="true"></i></button>
+                    <button type="button" (click)="borrarCliente( cliente )" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <button type="button" [routerLink]="['/cliente/', 'nuevo']" class="btn btn-info btn-rounded" data-toggle="modal" data-target="#add-contact">Agregar Cliente</button>
+                </td>
+
+                <td colspan="7" *ngIf="_clienteService.totalClientes > 10">
+                    <div class="text-right">
+                        <ul class="pagination">
+                            <li class="footable-page-arrow disabled"><a data-page="first" href="#first">«</a></li>
+                            <li class="footable-page-arrow disabled"><a data-page="prev" href="#prev">‹</a></li>
+                            <li class="footable-page active"><a data-page="0" href="#">1</a></li>
+                            <li class="footable-page"><a data-page="1" href="#">2</a></li>
+                            <li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li>
+                            <li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-right">
+                    <button [routerLink]="['/cliente/', 'nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary"> 
+                        <i class="fa fa-plus"> </i>
+                         Crear cliente
+                    </button>
+                </div>
+
+                <h3 class="card-title">Clientes Registrados ( <small>{{_clienteService.totalClientes}}</small> )</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Servicio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let cliente of clientes">
+                            <td>
+                                <img [src]="cliente.img | imagen:'cliente'" class="img-50 img-circle">
+                            </td>
+                            <td>
+                                {{cliente.nombre}}
+                            </td>
+                            <td>
+                                {{cliente.servicio.nombre}}
+                            </td>
+                            <td>
+                                <button [routerLink]="['/cliente', cliente._id ]" class="btn btn-primary">
+                                <i class="fa fa-edit"></i>
+                              </button>
+
+                                <button (click)="borrarCliente( cliente )" class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="_clienteService.totalClientes > 10">
+                    <button (click)=" cambiarDesde(-10) " class="btn btn-secondary ">
+                  ateriores
+                </button>
+                    <button (click)="cambiarDesde(10) " class="btn btn-secondary ">
+                  Siguientes
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->

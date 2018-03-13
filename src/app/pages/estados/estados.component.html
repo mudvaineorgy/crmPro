@@ -1,0 +1,82 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarEstado( input.value )" type="text" class="form-control" placeholder="Buscando servicio...">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-md-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-right">
+                    <button (click)="crearEstado()" type="button" class="btn waves-effect waves-light btn-rounded btn-primary"> 
+                      <i class="fa fa-plus"> </i>
+                       Crear estado
+                  </button>
+                </div>
+
+                <h3 class="card-title">Estatus Registrados ( <small>{{_estadoService.totalEstados}}</small> )</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Estatus</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let estado of estados">
+                            <td class="w70">
+                                <img (click)="actualizarImagen( estado )" [src]="estado.img | imagen:'estado'" class="img-50 pointer">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="estado.nombre" name="nombre" type="text" class="form-control" placeholder="nombre del Estadddo">
+
+                            </td>
+                            <td class="text-right">
+                                <button (click)="guardarEstado( estado )" class="btn btn-primary">
+                              <i class="fa fa-save"></i>
+                              </button>
+                                <!--
+                              <button (click)="borrarServicio( servicio )" class="btn btn-danger">
+                              <i class="fa fa-trash-o"></i>
+                            </button>
+-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+                ateriores
+              </button>
+                    <button (click)="cambiarDesde(10)" class="btn btn-secondary">
+
+                Siguientes
+              </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
