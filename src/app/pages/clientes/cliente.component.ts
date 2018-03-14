@@ -19,7 +19,7 @@ export class ClienteComponent implements OnInit {
   servicio: Servicio = new Servicio('');
   estados: Estado[] = [];
   estado: Estado = new Estado ('');
-  cliente: Cliente = new Cliente('', '', '', '', '', '');
+  cliente: Cliente = new Cliente('', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 
   constructor(
@@ -84,8 +84,8 @@ export class ClienteComponent implements OnInit {
 
     this._clienteService.guardarCliente(this.cliente)
       .subscribe(cliente => {
-
         this.cliente._id = cliente._id;
+
         this.router.navigate(['/cliente', cliente._id]);
     });
   }
@@ -96,9 +96,19 @@ export class ClienteComponent implements OnInit {
   }
 
   cambioEstado( id: string ) {
-    this._estadoService.obtenerEstado(id)
-      .subscribe( estado => this.estado = estado);
-  }
+    this._estadoService.obtenerEstado( id )
+      .subscribe( estado => {
+
+        if (estado) {
+          this.estado = estado;
+          } else {
+          this.estado = new estado('');
+          }
+          });
+
+       // this.estado = estado );
+      }
+
 
 
 cambiarFoto() {

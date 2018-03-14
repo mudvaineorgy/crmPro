@@ -53,7 +53,7 @@ auth2: any;
     // console.log(token);
 
     this._usuarioService.loginGoogle(token)
-      .subscribe( () => window.location.href = '#/dashboard');
+      .subscribe( () => window.location.href = '#/clientes');
     });
   }
 
@@ -67,7 +67,7 @@ auth2: any;
     // this.router.navigate(['/dashboard']);
 
     this._usuarioService.login( usuario, forma.value.recordarme )
-                        .subscribe( correcto => this.router.navigate(['/dashboard']) );
+                        .subscribe( correcto => this.router.navigate(['/clientes']) );
   }
 
 }

@@ -42,8 +42,8 @@ const pagesRoutes: Routes = [
              data: { titulo: 'Mantenimiento de usuarios' }  },
 
             { path: 'servicios', component: ServiciosComponent, data: { titulo: 'Servicios' }  },
-            { path: 'clientes', component: ClientesComponent, data: { titulo: 'Mantenimiento de Clientes' }  },
-            { path: 'cliente/:id', component: ClienteComponent, data: { titulo: 'Actualizar cliente' }  },
+            { path: 'clientes', component: ClientesComponent, data: { titulo: 'Clientes' }  },
+            { path: 'cliente/:id', component: ClienteComponent, data: { titulo: 'Crear cliente' }  },
             { path: 'estados', component: EstadosComponent, data: { titulo: 'Estados' }  },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
