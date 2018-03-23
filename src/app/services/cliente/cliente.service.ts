@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Cliente } from '../../models/cliente.model';
 
-import swal from 'sweetalert2';
+import swal from 'sweetalert';
 import { ClientesComponent } from '../../pages/clientes/clientes.component';
 import { Title } from '@angular/platform-browser';
 

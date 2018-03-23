@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subirArchivo/subir-archivo.service';
 import { Observable } from 'rxjs/Observable';
 
-import swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 
 @Injectable()
